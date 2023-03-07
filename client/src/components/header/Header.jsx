@@ -10,15 +10,25 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { format } from "date-fns";
 
-const Header = () => {
+const Header = ({type}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [openSeats, setSeatsOptions] = useState(false);
   const [seats, setSeats] = useState({
     seat: 1,
   });
+
+  const handleOption = (seat, operation) => {
+    setSeats((prev) => {
+      return {
+        ...prev,
+        [seat]: operation === "i" ? seats[seat] + 1 : seats[seat] - 1,
+      };
+    });
+  };
+
   return (
     <div className="header">
-      <div className="headerContainer">
+      <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faUtensils} />
@@ -29,8 +39,13 @@ const Header = () => {
             <span>Reservations</span>
           </div>
         </div>
-        <h1 className="headerTitle">A brand new dining experience</h1>
-        <p className="headerDescription">Pick your favourite table</p>
+        { type !== "list" &&
+        <><h1 className="headerTitle">
+          A brand New Dining Experience Here in Egypt!
+        </h1>
+        <p className="headerDescription">
+          Make reservations like never before and pick your favourite table!
+        </p>
         <button className="headerBtn">Sign in / Register</button>
         <div className="headerSearch">
           <div className="headerSearchItem">
@@ -54,22 +69,33 @@ const Header = () => {
           </div>
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-            <span className="headerSearchText">{`${seats.seat} seats`}</span>
-            <div className="options">
+            <span onClick={()=>setSeatsOptions(!openSeats)} className="headerSearchText">{`${seats.seat} seats`}</span>
+            {openSeats &&<div className="options">
               <div className="optionItem">
                 <span className="optionText">Seats</span>
                 <div className="optionCounter">
-                  <button className="optionCounterBtn">-</button>
-                  <span className="optionCounterNumber">1</span>
-                  <button className="optionCounterBtn">+</button>
+                  <button
+                  disabled={seats.seat <=1}
+                    className="optionCounterBtn"
+                    onClick={() => handleOption("seat", "d")}
+                  >
+                    -
+                  </button>
+                  <span className="optionCounterNumber">{seats.seat}</span>
+                  <button
+                    className="optionCounterBtn"
+                    onClick={() => handleOption("seat", "i")}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-            </div>
+            </div>}
           </div>
           <div className="headerSearchItem">
             <button className="headerBtn">Search</button>
           </div>
-        </div>
+        </div> </> }
       </div>
     </div>
   );
