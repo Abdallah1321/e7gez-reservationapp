@@ -9,8 +9,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { format } from "date-fns";
+import {useNavigate} from "react-router-dom"
 
 const Header = ({type}) => {
+  const [city, setCity] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [openSeats, setSeatsOptions] = useState(false);
   const [seats, setSeats] = useState({
@@ -25,6 +27,12 @@ const Header = ({type}) => {
       };
     });
   };
+
+  const navigate = useNavigate()
+
+  const handleSearch = () =>{
+    navigate("/restaurants", { state: {city, startDate, seats}})
+  } 
 
   return (
     <div className="header">
@@ -54,6 +62,7 @@ const Header = ({type}) => {
               type="text"
               placeholder="Where are we eating?"
               className="headerSearchInput"
+              onChange={e=>setCity(e.target.value)}
             />
           </div>
           <div className="headerSearchItem">
@@ -93,7 +102,7 @@ const Header = ({type}) => {
             </div>}
           </div>
           <div className="headerSearchItem">
-            <button className="headerBtn">Search</button>
+            <button className="headerBtn" onClick={handleSearch}>Search</button>
           </div>
         </div> </> }
       </div>

@@ -1,0 +1,96 @@
+.searchItem {
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.siImg {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.siTitle {
+  font-size: 20px;
+  color: #550457;
+}
+
+.siAddress {
+  font-size: 12px;
+}
+
+.siSubtitle {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.siDescription {
+  font-size: 12px;
+}
+
+.siCancel {
+  font-size: 12px;
+  color: #008009;
+  font-weight: bold;
+}
+
+.siDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 2;
+}
+
+.siRating {
+  display: flex;
+  justify-content: space-between;
+}
+
+.siRating > span {
+  font-weight: 500;
+}
+
+.siRating > button {
+  background-color: #c5e6a9;
+  color: #550457;
+  padding: 5px;
+  font-weight: bold;
+  border: none;
+}
+
+.siDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.siDetailTexts {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.siPrice {
+  font-size: 24px;
+}
+
+.siPriceNote {
+  font-size: 12px;
+  color: gray;
+}
+
+.siCheckButton {
+  background-color: #c5e6a9;
+  color: #550457;
+  font-weight: bold;
+  padding: 10px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
