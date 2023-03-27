@@ -1,0 +1,49 @@
+.timeline-container {
+  text-align: center;
+  padding: 1rem;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservation-time {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.reservation-details {
+  background-color: #f2f2f2;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-restaurant {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.reservation-name {
+  font-size: 14px;
+  margin-right: 1rem;
+}
+
+.reservation-table {
+  font-size: 14px;
+  margin-right: 1rem;
+}
+
+.reservation-seats {
+  font-size: 14px;
+}

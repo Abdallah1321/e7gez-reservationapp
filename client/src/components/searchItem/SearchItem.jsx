@@ -1,6 +1,13 @@
 import "./searchItem.css";
+import { useNavigate } from "react-router-dom";
 
 const SearchItem = () => {
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate("/restaurants/1");
+  };
+
   return (
     <div className="searchItem">
       <img
@@ -28,7 +35,7 @@ const SearchItem = () => {
           LE 100 <small>per person</small>
         </span>
         <span className="siPriceNote">Does not include menu orders</span>
-        <button className="siCheckButton">Check for tables</button>
+        <button className="siCheckButton" onClick={handleSearch}>Check for tables</button>
       </div>
     </div>
   );
