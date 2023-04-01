@@ -6,12 +6,21 @@ import { useLocation } from "react-router-dom";
 import { format } from "date-fns";
 import { useState } from "react";
 import SearchItem from "../../components/searchItem/SearchItem";
+import { RaceBy } from "@uiball/loaders";
+import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
   const [city, setCity] = useState(location.state.city);
   const [startDate, setStartDate] = useState(location.state.startDate);
   const [seats, setSeats] = useState(location.state.seats);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+  
+
+  const { data, loading, error, refetch } = useFetch(
+    `http://localhost:8800/api/restaurants?city=${city}`
+  );
   console.log(location);
 
   return (
@@ -43,13 +52,13 @@ const List = () => {
                   <span className="lsOptionText">
                     Min Reservation Fee <small>per person</small>
                   </span>
-                  <input type="number" className="lsOptionInput" />
+                  <input type="number" onChange={e=>setMin(e.target.value)} className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max Reservation Fee <small>per person</small>
                   </span>
-                  <input type="number" className="lsOptionInput" />
+                  <input type="number" onChange={e=>setMax(e.target.value)} className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Seats</span>
@@ -65,12 +74,15 @@ const List = () => {
             <button>Search</button>
           </div>
           <div className="listResult">
-            <SearchItem/>
-            <SearchItem/>
-            <SearchItem/>
-            <SearchItem/>
-            <SearchItem/>
-
+            {loading ? 
+              <RaceBy size={80} lineWeight={5} speed={1.4} color="black" />
+            : 
+              <>
+                {data.map(item=>(
+                  <SearchItem item={item} key={item._id} />
+                  ))}
+              </>
+            }
           </div>
         </div>
       </div>

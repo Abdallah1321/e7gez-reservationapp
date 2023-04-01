@@ -1,50 +1,37 @@
-import './featuredRestaurants.css'
+import useFetch from "../../hooks/useFetch";
+import "./featuredRestaurants.css";
+import { RaceBy } from "@uiball/loaders";
 
 const FeaturedRestaurants = () => {
+  const { data, loading, error } = useFetch(
+    "http://localhost:8800/api/restaurants?featured=true&limit=4"
+  );
   return (
     <div className="fr">
-        <div className="frItem">
-            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" className="frImg" />
-            <span className="frImg">That place which sells food</span>
-            <span className="frCity">New Cairo</span>
-            <span className="frPrice">Reservation fee: 100 LE</span>
-            <div className="frRating">
-                <button>7.8</button>
+      {loading ? (
+        <RaceBy size={80} lineWeight={5} speed={1.4} color="black" />
+      ) : (
+        <>
+          {data.map((item) => (
+            <div className="frItem" key ={item._id}>
+              <img
+                src={item.photos[0]}
+                alt=""
+                className="frImg"
+              />
+              <span className="frImg">{item.name}</span>
+              <span className="frCity">{item.city}</span>
+              <span className="frPrice">Reservation fee: {item.price} LE</span>
+             { item.rating && <div className="frRating">
+                <button>{item.rating}</button>
                 <span>Great</span>
+              </div>}
             </div>
-        </div>
-        <div className="frItem">
-            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" className="frImg" />
-            <span className="frImg">That place which sells food</span>
-            <span className="frCity">New Cairo</span>
-            <span className="frPrice">Reservation fee: 100 LE</span>
-            <div className="frRating">
-                <button>7.8</button>
-                <span>Great</span>
-            </div>
-        </div>
-        <div className="frItem">
-            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" className="frImg" />
-            <span className="frImg">That place which sells food</span>
-            <span className="frCity">New Cairo</span>
-            <span className="frPrice">Reservation fee: 100 LE</span>
-            <div className="frRating">
-                <button>7.8</button>
-                <span>Great</span>
-            </div>
-        </div>
-        <div className="frItem">
-            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" className="frImg" />
-            <span className="frImg">That place which sells food</span>
-            <span className="frCity">New Cairo</span>
-            <span className="frPrice">Reservation fee: 100 LE</span>
-            <div className="frRating">
-                <button>7.8</button>
-                <span>Great</span>
-            </div>
-        </div>
+          ))}
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default FeaturedRestaurants
+export default FeaturedRestaurants;

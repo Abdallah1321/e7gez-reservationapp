@@ -1,41 +1,39 @@
 import "./searchItem.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const SearchItem = () => {
+const SearchItem = ({item}) => {
   const navigate = useNavigate();
-
-  const handleSearch = () => {
-    navigate("/restaurants/1");
-  };
 
   return (
     <div className="searchItem">
       <img
-        src="https://images.unsplash.com/photo-1553443175-e1ce8896d8f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1110&q=80"
+        src={item.photos[0]}
         alt=""
         className="siImg"
       />
       <div className="siDesc">
-        <h1 className="siTitle">Thai Restaurant</h1>
-        <span className="siAddress">90 Street, Concord Plaza</span>
-        <span className="siSubtitle">Asian</span>
+        <h1 className="siTitle">{item.name}</h1>
+        <span className="siAddress">{item.city}, {item.address}</span>
+        <span className="siSubtitle">{item.type}</span>
         <span className="siDescription">
-          One of the Asian restaurants in Egypt
+          {item.description}
         </span>
         <span className="siCancel">Free Cancellation</span>
       </div>
       <div className="siDetails">
-        <div className="siRating">
+        {item.rating && <div className="siRating">
           <span>Great!</span>
-          <button>7.8</button>
-        </div>
+          <button>{item.rating}</button>
+        </div>}
       </div>
       <div className="siDetailTexts">
         <span className="siPrice">
-          LE 100 <small>per person</small>
+          LE {item.price} <small>per person</small>
         </span>
         <span className="siPriceNote">Does not include menu orders</span>
-        <button className="siCheckButton" onClick={handleSearch}>Check for tables</button>
+        <Link to={`http://localhost:8800/api/restaurants?city=${item._id}`}>
+        <button className="siCheckButton" >Check for tables</button>
+        </Link>
       </div>
     </div>
   );
