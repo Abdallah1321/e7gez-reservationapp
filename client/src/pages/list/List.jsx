@@ -16,12 +16,17 @@ const List = () => {
   const [seats, setSeats] = useState(location.state.seats);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
-  
 
-  const { data, loading, error, refetch } = useFetch(
-    `http://localhost:8800/api/restaurants?city=${city}`
+  const { data, loading, error, reFetch } = useFetch(
+    `http://localhost:8800/api/restaurants?city=${city}&min=${min || 0}&max=${
+      max || 99999
+    }`
   );
   console.log(location);
+
+  const handleClick = () => {
+    reFetch();
+  };
 
   return (
     <div>
@@ -52,13 +57,21 @@ const List = () => {
                   <span className="lsOptionText">
                     Min Reservation Fee <small>per person</small>
                   </span>
-                  <input type="number" onChange={e=>setMin(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMin(e.target.value)}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max Reservation Fee <small>per person</small>
                   </span>
-                  <input type="number" onChange={e=>setMax(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMax(e.target.value)}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Seats</span>
@@ -71,18 +84,18 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button>Search</button>
+            <button onClick={handleClick}>Search</button>
           </div>
           <div className="listResult">
-            {loading ? 
+            {loading ? (
               <RaceBy size={80} lineWeight={5} speed={1.4} color="black" />
-            : 
+            ) : (
               <>
-                {data.map(item=>(
+                {data.map((item) => (
                   <SearchItem item={item} key={item._id} />
-                  ))}
+                ))}
               </>
-            }
+            )}
           </div>
         </div>
       </div>

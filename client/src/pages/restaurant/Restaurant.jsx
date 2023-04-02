@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Stage, Layer, Rect, Text } from "react-konva";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
@@ -12,8 +12,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./restaurant.css";
 import EmailList from "../../components/emailList/EmailList";
+import useFetch from "../../hooks/useFetch";
 
 function RestaurantLayout() {
+  const location = useLocation()
+  const path = location.split("/")
+
   const { restaurantId } = useParams();
   const history = useNavigate();
 
@@ -38,6 +42,8 @@ function RestaurantLayout() {
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+
+  const {data, loading, error} = useFetch(`http://localhost:8800/api/restaurants/`)
 
   // This is a simplified example of the layout and table data
   const layout = {

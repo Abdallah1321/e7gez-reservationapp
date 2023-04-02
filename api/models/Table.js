@@ -1,11 +1,23 @@
 import mongoose from 'mongoose';
 
 const TableSchema = new mongoose.Schema({
-    title:{
-        type: String,
+    x:{
+        type: Number,
         required: true,
     },
-    seats:{
+    y:{
+        type: Number,
+        required: true,
+    },
+    width:{
+        type: Number,
+        required: true,
+    },
+    height:{
+        type: Number,
+        required: true,
+    },
+    y:{
         type: Number,
         required: true,
     },
@@ -13,6 +25,13 @@ const TableSchema = new mongoose.Schema({
         type: Number,
         required: true,
         unique: true
+    },
+    capacity:{
+        type: Number,
+        required: true,
+    },
+    features:{
+        type: [String],
     },
     isBooked: {
         type: Boolean,

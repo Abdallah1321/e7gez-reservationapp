@@ -47,7 +47,7 @@ export const getRestaurants = async (req, res, next) => {
   try {
     const restaurants = await Restaurant.find({
       ...others,
-      cheapestPrice: { $gt: min | 1, $lt: max || 99999},
+      price: { $gt: min | 1, $lt: max || 99999 },
     }).limit(req.query.limit);
     res.status(200).json(restaurants);
   } catch (err) {
