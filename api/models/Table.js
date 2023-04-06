@@ -37,7 +37,6 @@ const TableSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    roomNumbers: [{number:Number, unavailableDates: {type: [Date]}}],
 },{timestamps:true});
 
 export default mongoose.model("Table",TableSchema)

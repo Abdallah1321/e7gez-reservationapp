@@ -37,6 +37,11 @@ const RestaurantSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  menu: [{
+    name: { type: String },
+    price: { type: Number },
+    description: { type: String },
+  }],
   tables: {
     type: [String],
   },
@@ -44,7 +49,6 @@ const RestaurantSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  menu: [{ item: String, price: Number }],
 });
 
 export default mongoose.model("Restaurant", RestaurantSchema);
