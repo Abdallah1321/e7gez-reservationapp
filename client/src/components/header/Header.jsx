@@ -30,6 +30,8 @@ const Header = ({type}) => {
 
   const navigate = useNavigate()
 
+
+
   const handleSearch = () =>{
     navigate("/restaurants", { state: {city, startDate, seats}})
   } 
@@ -54,7 +56,6 @@ const Header = ({type}) => {
         <p className="headerDescription">
           Make reservations like never before and pick your favourite table!
         </p>
-        <button className="headerBtn">Sign in / Register</button>
         <div className="headerSearch">
           <div className="headerSearchItem">
             <FontAwesomeIcon icon={faUtensils} className="headerIcon" />
