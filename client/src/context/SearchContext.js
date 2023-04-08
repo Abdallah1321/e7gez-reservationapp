@@ -19,7 +19,7 @@ const SearchReducer = (state, action) => {
   }
 };
 
-export const SearchContextProvider = ({ seats }) => {
+export const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
 
   return (
@@ -31,7 +31,7 @@ export const SearchContextProvider = ({ seats }) => {
         dispatch,
       }}
     >
-      {seats}
+      {children}
     </SearchContext.Provider>
   );
 };

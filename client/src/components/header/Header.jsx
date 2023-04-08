@@ -7,9 +7,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { format } from "date-fns";
 import {useNavigate} from "react-router-dom"
+import { SearchContext } from "../../context/SearchContext";
 
 const Header = ({type}) => {
   const [city, setCity] = useState("");
@@ -28,11 +29,14 @@ const Header = ({type}) => {
     });
   };
 
+  const {dispatch} = useContext(SearchContext)
+
   const navigate = useNavigate()
 
 
 
   const handleSearch = () =>{
+    dispatch({type:"NEW_SEARCH", payload:{city, startDate, seats}})
     navigate("/restaurants", { state: {city, startDate, seats}})
   } 
 

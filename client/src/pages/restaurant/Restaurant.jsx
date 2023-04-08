@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Stage, Layer, Rect, Text } from "react-konva";
 import Navbar from "../../components/navbar/Navbar";
@@ -14,6 +14,7 @@ import {
 import "./restaurant.css";
 import EmailList from "../../components/emailList/EmailList";
 import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 
 function RestaurantLayout() {
   const location = useLocation();
@@ -48,6 +49,9 @@ function RestaurantLayout() {
     `http://localhost:8800/api/restaurants/find/${id}`
   );
   
+  const {seats} = useContext(SearchContext)
+
+  console.log(seats.seat)
 
   // This is a simplified example of the layout and table data
   const layout = {
@@ -164,7 +168,7 @@ function RestaurantLayout() {
             </div>
             <div className="restaurantMenu">
               <h2 className="menuTitle">Our Menu</h2>
-              {data.menu.map((item) => (
+              {data.menu?.map((item) => (
                 <div className="menuItemWrapper">
                   <ul>
                     <li className="menuItems">
@@ -244,7 +248,7 @@ function RestaurantLayout() {
                     greet you and treat you
                   </span>
                   <h2>
-                    <b>300 LE</b> (3 Person(s))
+                    <b>{seats.seat * data.price} LE</b>/ {seats.seat} (Person(s))
                   </h2>
                   <button onClick={handleConfirmReservation}>
                     Confirm Reservation
