@@ -5,6 +5,7 @@ import Restaurant from "./pages/restaurant/Restaurant";
 import Timeline from "./pages/timeline/Timeline";
 import Service from "./pages/serviceDetect/Service";
 import Login from "./pages/login/Login";
+import Signup from "./pages/signup/Signup";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/restaurants" element={<List />} />
         <Route path="/restaurants/:id" element={<Restaurant />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/timeline/" element={<Timeline />} />
       </Routes>
     </BrowserRouter>

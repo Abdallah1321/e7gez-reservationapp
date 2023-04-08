@@ -1,30 +1,37 @@
 import { useState } from "react";
-import "./login.css";
 import Navbar from "../../components/navbar/Navbar";
-import { useLogin } from "../../hooks/useLogin";
-import { div } from "@tensorflow/tfjs";
+import { useSignup } from "../../hooks/useSignup"
 
-const Login = () => {
+const Signup = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useLogin();
+
+  const {signup, error, isLoading} = useSignup()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await login(username, password);
+    await signup(username, email, password)
   };
 
   return (
     <div>
-      <Navbar />
-      <form className="login" onSubmit={handleSubmit}>
-        <h3>Login</h3>
+      <Navbar/>
+      <form className="signup" onSubmit={handleSubmit}>
+        <h3>Sign up</h3>
+
         <label>Username:</label>
         <input
           type="text"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
+        />
+        <label>Email:</label>
+        <input
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
         <label>Password:</label>
         <input
@@ -33,11 +40,11 @@ const Login = () => {
           value={password}
         />
 
-        <button disabled={isLoading}>Log in</button>
+        <button disabled={isLoading}>Sign up</button>
         {error && <div className="error">{error}</div>}
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
