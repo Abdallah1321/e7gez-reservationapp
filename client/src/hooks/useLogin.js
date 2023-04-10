@@ -31,7 +31,7 @@ export const useLogin = () => {
       dispatch({ type: "LOGIN", payload: user });
 
       setIsLoading(false);
-      navigate("/")
+      navigate(-1)
     } catch (error) {
       setError(error.message);
       setIsLoading(false);

@@ -15,13 +15,16 @@ import "./restaurant.css";
 import EmailList from "../../components/emailList/EmailList";
 import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 function RestaurantLayout() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
   const { restaurantId } = useParams();
-  const history = useNavigate();
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const [selectedTableId, setSelectedTableId] = useState(null);
 
@@ -44,14 +47,15 @@ function RestaurantLayout() {
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(
     `http://localhost:8800/api/restaurants/find/${id}`
   );
-  
-  const {seats} = useContext(SearchContext)
 
-  console.log(seats.seat)
+  const { seats } = useContext(SearchContext);
+
+  console.log(seats.seat);
 
   // This is a simplified example of the layout and table data
   const layout = {
@@ -95,7 +99,6 @@ function RestaurantLayout() {
     ],
   };
 
-
   const handleOpen = (i) => {
     setSlideNumber(i);
     setOpen(true);
@@ -110,6 +113,14 @@ function RestaurantLayout() {
     }
 
     setSlideNumber(newSlide);
+  };
+
+  const handleClick = () => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -179,87 +190,29 @@ function RestaurantLayout() {
                 </div>
               ))}
             </div>
-
-            <h2>Restaurant Layout</h2>
-            <p>Select a table to make a reservation.</p>
-            <div>
-              <Stage width={400} height={400}>
-                <Layer>
-                  <Rect x={0} y={0} width={400} height={400} fill="#f9f9f9" />
-                  {layout.tables.map((table) => (
-                    <Rect
-                      key={table.id}
-                      x={table.x}
-                      y={table.y}
-                      width={table.width}
-                      height={table.height}
-                      fill={selectedTableId === table.id ? "red" : "white"}
-                      stroke="black"
-                      strokeWidth={2}
-                      onClick={() => handleTableClick(table.id)}
-                    />
-                  ))}
-                  {layout.tables.map((table) => (
-                    <Text
-                      key={table.id}
-                      x={table.x + table.width / 20}
-                      y={table.y + table.height / 3}
-                      text={`Table ${table.id} (${table.capacity} seats) \n ${table.features}`}
-                      fontSize={12}
-                      fontStyle="bold"
-                      align="center"
-                      verticalAlign="middle"
-                    />
-                  ))}
-                </Layer>
-              </Stage>
-            </div>
-            <div>
-              {selectedTableId && (
-                <p>
-                  You have selected table {selectedTableId}.<br />
-                  Please select the number of seats:
-                  <select>
-                    {Array.from(
-                      {
-                        length: layout.tables.find(
-                          (table) => table.id === selectedTableId
-                        ).capacity,
-                      },
-                      (_, i) => i + 1
-                    ).map((num) => (
-                      <option key={num} value={num}>
-                        {num}
-                      </option>
-                    ))}
-                  </select>
-                </p>
-              )}
-              <div className="restaurantDetails">
-                <div className="restaurantDetailsTexts">
-                  <h1 className="restaurantTitle">Details</h1>
-                  <p className="restaurantDesc">{data.description}</p>
-                </div>
-                <div className="restaurantDetailsPrice">
-                  <h1>The best spot in town!</h1>
-                  <span>
-                    We have the best food to ever exist ever please come on down
-                    and try it for yourself and have our most amazing staff
-                    greet you and treat you
-                  </span>
-                  <h2>
-                    <b>{seats.seat * data.price} LE</b>/ {seats.seat} (Person(s))
-                  </h2>
-                  <button onClick={handleConfirmReservation}>
-                    Confirm Reservation
-                  </button>
-                </div>
+            <div className="restaurantDetails">
+              <div className="restaurantDetailsTexts">
+                <h1 className="restaurantTitle">Details</h1>
+                <p className="restaurantDesc">{data.description}</p>
               </div>
-              <button onClick={() => history(-1)}>Go Back</button>
+              <div className="restaurantDetailsPrice">
+                <h1>The best spot in town!</h1>
+                <span>
+                  We have the best food to ever exist ever please come on down
+                  and try it for yourself and have our most amazing staff greet
+                  you and treat you
+                </span>
+                <h2>
+                  <b>{seats.seat * data.price} LE</b>/ {seats.seat} (Person(s))
+                </h2>
+                <button onClick={handleClick}>Find Your Table!</button>
+              </div>
             </div>
+            <button className="back" onClick={() => navigate(-1)}>Go Back</button>
           </div>
         </div>
       )}
+      {openModal && <Reserve setOpen={setOpenModal} restaurantId={id} />}
       <EmailList />
     </div>
   );

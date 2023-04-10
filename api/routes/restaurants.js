@@ -6,6 +6,7 @@ import {
     createRestaurant,
     deleteRestaurant,
     getRestaurant,
+    getRestaurantTables,
     getRestaurants,
     updateRestaurant
 } from "../controllers/restaurant.js";
@@ -31,5 +32,7 @@ router.get("/", getRestaurants)
 router.get("/countByCity", countByCity)
 
 router.get("/countByType", countByType)
+
+router.get("/table/:id", getRestaurantTables)
 
 export default router

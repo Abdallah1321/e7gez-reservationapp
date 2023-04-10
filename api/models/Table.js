@@ -1,42 +1,48 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const TableSchema = new mongoose.Schema({
-    x:{
-        type: Number,
-        required: true,
+const TableSchema = new mongoose.Schema(
+  {
+    x: {
+      type: Number,
+      required: true,
     },
-    y:{
-        type: Number,
-        required: true,
+    y: {
+      type: Number,
+      required: true,
     },
-    width:{
-        type: Number,
-        required: true,
+    width: {
+      type: Number,
+      required: true,
     },
-    height:{
-        type: Number,
-        required: true,
+    height: {
+      type: Number,
+      required: true,
     },
-    y:{
-        type: Number,
-        required: true,
+    y: {
+      type: Number,
+      required: true,
     },
-    tableNumber:{
-        type: Number,
-        required: true,
-        unique: true
+    tableNumber: {
+      type: Number,
+      required: true,
+      unique: true,
     },
-    capacity:{
-        type: Number,
-        required: true,
+    capacity: {
+      type: Number,
+      required: true,
     },
-    features:{
-        type: [String],
+    features: {
+      type: [String],
     },
     isBooked: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
-},{timestamps:true});
+    unavailableDates: {
+      type: [Date],
+    },
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model("Table",TableSchema)
+export default mongoose.model("Table", TableSchema);

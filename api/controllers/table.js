@@ -29,6 +29,20 @@ export const updateTable = async(req, res, next) =>{
     }
 }
 
+
+export const updateTableAvailability = async(req, res, next) =>{
+    try{
+        await Table.findByIdAndUpdate(req.params.id, {
+            $push :{
+                "unavailableDates" : req.body.dates
+            }
+        })
+        res.status(200).json("Table bookings updated!")
+    }catch(err){
+        next(err)
+    }
+}
+
 export const deleteTable = async(req, res, next) =>{
     const restaurantId = req.params.restaurantid;
     try{
@@ -61,3 +75,4 @@ export const getTables = async(req, res, next) =>{
         next(err)
     }
 }
+
