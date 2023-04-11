@@ -32,10 +32,14 @@ export const useLogin = () => {
       localStorage.setItem("user", JSON.stringify(user));
 
       //update auth context
-      dispatch({ type: "LOGIN", payload: user });
 
-      setIsLoading(false);
-      navigate(-1);
+      if (user.isAdmin) {
+        dispatch({ type: "LOGIN", payload: user.details });
+        setIsLoading(false);
+        navigate(-1);
+      } else{
+        dispatch({type: "LOGIN_FAILURE", payload: { message: "You do not have permission to access this page!"}})
+      }
     } catch (error) {
       setError(error.message);
       setIsLoading(false);

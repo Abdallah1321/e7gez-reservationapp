@@ -7,6 +7,7 @@ import { useLogout } from "../../hooks/useLogout";
 
 const Navbar = () => {
   const { user } = useAuthContext()
+  
   const { logout } = useLogout()
   const handleClick = () => {
     logout()
