@@ -6,6 +6,7 @@ import { SearchContext } from "../../context/SearchContext";
 import { Stage, Layer, Rect, Text } from "react-konva";
 import { useContext, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpen, restaurantId }) => {
   const { data, loading, error } = useFetch(
@@ -17,12 +18,14 @@ const Reserve = ({ setOpen, restaurantId }) => {
   const [selectedTableId, setSelectedTableId] = useState(null);
 
   const handleTableClick = (tableId) => {
-    if (selectedTableId === tableId) {
-      setSelectedTableId(null);
-    } else {
-      setSelectedTableId(tableId);
-    }
-    console.log("Selected Table IDs:", selectedTableId);
+    setSelectedTableId((prevSelectedTableId) => {
+      if (prevSelectedTableId === tableId) {
+        return null;
+      } else {
+        return tableId;
+      }
+    });
+    console.log(tableId)
   };
 
   const date = new Date(startDate).getTime();
@@ -35,18 +38,22 @@ const Reserve = ({ setOpen, restaurantId }) => {
     return !isFound;
   };
 
+  const navigate = useNavigate()
+
   const handleClick = async () => {
     try {
-      await Promise.all(
-        selectedTableId.map((tableId) => {
-          const res = axios.put(
-            `http://localhost:8800/api/tables/availability/${tableId}`,
-            { startDate: date }
-          );
-          return res.data;
-        })
-      );
-    } catch (err) {}
+      if (selectedTableId) {
+        const res = await axios.put(
+          `http://localhost:8800/api/tables/availability/${selectedTableId}`,
+          { dates: date }
+        );
+        return res.data
+      }
+      setOpen(false)
+      navigate("/")
+    } catch (err) {
+      // Handle error
+    }
   };
 
   return (
