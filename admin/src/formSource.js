@@ -1,77 +1,122 @@
 export const userInputs = [
     {
-      id: 1,
+      id: "username",
       label: "Username",
       type: "text",
       placeholder: "john_doe",
     },
     {
-      id: 2,
-      label: "Name and surname",
-      type: "text",
-      placeholder: "John Doe",
-    },
-    {
-      id: 3,
+      id: "email",
       label: "Email",
       type: "mail",
       placeholder: "john_doe@gmail.com",
     },
     {
-      id: 4,
-      label: "Phone",
-      type: "text",
-      placeholder: "+1 234 567 89",
-    },
-    {
-      id: 5,
+      id: "password",
       label: "Password",
       type: "password",
     },
     {
-      id: 6,
-      label: "Address",
+      id: "phone",
+      label: "Phone",
       type: "text",
-      placeholder: "Elton St. 216 NewYork",
+      placeholder: "+20 234 567 89",
     },
     {
-      id: 7,
+      id: "country",
       label: "Country",
       type: "text",
-      placeholder: "USA",
+      placeholder: "Egypt",
     },
   ];
   
-  export const productInputs = [
+export const restaurantInputs = [
     {
-      id: 1,
-      label: "Title",
-      type: "text",
-      placeholder: "Apple Macbook Pro",
+      id: "name",
+      label: "Name",
+      type: "name",
+      placeholder: "The Restaurant",
     },
     {
-      id: 2,
+      id: "type",
+      label: "Type",
+      type: "text",
+      placeholder: "FineDining",
+    },
+    {
+      id: "city",
+      label: "City",
+      type: "text",
+      placeholder: "NewCairo",
+    },
+    {
+      id: "address",
+      label: "Address",
+      type: "text",
+      placeholder: "Street 90",
+    },
+    {
+      id: "title",
+      label: "Title",
+      type: "text",
+      placeholder: "Best donuts",
+    },
+    {
+      id: "description",
       label: "Description",
       type: "text",
       placeholder: "Description",
     },
     {
-      id: 3,
-      label: "Category",
-      type: "text",
-      placeholder: "Computers",
+      id: "price",
+      label: "Price",
+      type: "number",
+      placeholder: "100",
+    },
+  ];
+  
+  export const tableInputs = [
+    {
+      id: "x",
+      label: "X Position",
+      type: "number",
+      placeholder: "50",
     },
     {
-      id: 4,
-      label: "Price",
-      type: "text",
+      id: "y",
+      label: "Y Position",
+      type: "number",
+      placeholder: "50",
+    },
+    {
+      id: "width",
+      label: "Width",
+      type: "number",
       placeholder: "100",
     },
     {
-      id: 5,
-      label: "Stock",
+      id: "height",
+      label: "Height",
+      type: "number",
+      placeholder: "100",
+    },
+    {
+      id: "tableNumber",
+      label: "Table Number",
+      type: "number",
+      placeholder: "1",
+    },
+    {
+      id: "capacity",
+      label: "Capacity",
+      type: "number",
+      placeholder: "4",
+    },
+    {
+      id: "features",
+      label: "Features",
       type: "text",
-      placeholder: "in stock",
+      placeholder: "Near balcony",
     },
   ];
   

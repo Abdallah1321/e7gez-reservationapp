@@ -4,11 +4,15 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs } from "./formSource";
+import { restaurantInputs, tableInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { restaurantColumns, tableColumns, userColumns } from "./datatablesource";
+import NewRestaurant from "./pages/newRestaurant/NewRestaurant";
+import NewTable from "./pages/newTable/NewTable";
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -43,7 +47,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List />
+                    <List columns={userColumns} />
                   </ProtectedRoute>
                 }
               />
@@ -64,17 +68,17 @@ function App() {
                 }
               />
             </Route>
-            <Route path="products">
+            <Route path="restaurants">
               <Route
                 index
                 element={
                   <ProtectedRoute>
-                    <List />
+                    <List columns={restaurantColumns} />
                   </ProtectedRoute>
                 }
               />
               <Route
-                path=":productId"
+                path=":restaurantId"
                 element={
                   <ProtectedRoute>
                     <Single />
@@ -85,7 +89,33 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title="Add New Product" />
+                    <NewRestaurant />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+            <Route path="tables">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List columns={tableColumns} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":tableId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewTable title="Add New Restaurant" />
                   </ProtectedRoute>
                 }
               />

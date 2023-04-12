@@ -7,7 +7,7 @@ import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const Datatable = () => {
+const Datatable = ({columns}) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -61,14 +61,14 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New User
-        <Link to="/users/new" className="link">
+        <Link to={`/${path}/new`} className="link">
           Add New
         </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={list}
-        columns={userColumns.concat(actionColumn)}
+        columns={columns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
