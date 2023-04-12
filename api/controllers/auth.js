@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../utils/error.js";
-import validatior from "validator";
+import validator from "validator";
 import jwt from "jsonwebtoken";
 
 export const register = async (req, res, next) => {
@@ -10,10 +10,10 @@ export const register = async (req, res, next) => {
     if (!req.body.email || !req.body.username || !req.body.password) {
       throw Error("All fields must be filled!");
     }
-    if (!validatior.isEmail(req.body.email)) {
+    if (!validator.isEmail(req.body.email)) {
       throw Error("Email is invalid!");
     }
-    if (!validatior.isStrongPassword(req.body.password)) {
+    if (!validator.isStrongPassword(req.body.password)) {
       throw Error("Password is weak!");
     }
     const salt = bcrypt.genSaltSync(10);

@@ -1,8 +1,7 @@
 import { useState } from "react";
-import "./login.scss";
+import "./login.css";
 import Navbar from "../../components/navbar/Navbar";
 import { useLogin } from "../../hooks/useLogin";
-import { div } from "@tensorflow/tfjs";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -17,22 +16,22 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
+      <h1 className="loginTitle">E7GEZ ADMIN LOGIN</h1>
       <form className="login" onSubmit={handleSubmit}>
         <h3>Login</h3>
         <label>Username:</label>
         <input
-          className="lInput"
           type="text"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
+          className="lInput"
         />
         <label>Password:</label>
         <input
-          className="lInput"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          className="lInput"
         />
 
         <button disabled={isLoading}>Log in</button>

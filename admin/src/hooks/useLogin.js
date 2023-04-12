@@ -9,6 +9,13 @@ export const useLogin = () => {
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+      },
+      withCredentials: true
+    }
+
   const login = async (username, password) => {
     setIsLoading(true);
     setError(null);
@@ -17,9 +24,7 @@ export const useLogin = () => {
       const response = await axios.post(
         "http://localhost:8800/api/auth/login",
         { username, password },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
+        config
       );
 
       const user = response.data;
@@ -37,8 +42,13 @@ export const useLogin = () => {
         dispatch({ type: "LOGIN", payload: user.details });
         setIsLoading(false);
         navigate(-1);
-      } else{
-        dispatch({type: "LOGIN_FAILURE", payload: { message: "You do not have permission to access this page!"}})
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: {
+            message: "You do not have permission to access this page!",
+          },
+        });
       }
     } catch (error) {
       setError(error.message);
