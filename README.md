@@ -64,3 +64,45 @@ git clone https://github.com/yourusername/e7gez-reservationapp.git
 cd e7gez-reservationapp
 ```
 
+3. Install the dependencies for the frontend, backend, and admin dashboard components separately using npm or yarn. For example, for the frontend component:
+
+```
+cd client
+npm install
+```
+
+4. Configure the backend by creating a .env file in the backend directory (api), and set the following environment variables:
+
+```
+MONGO = <your_mongodb_connection_string>
+JWT = <your_secret_key_for_jwt>
+```
+
+5. Start the frontend, backend, and admin dashboard components separately. For example, for the frontend component:
+
+```
+cd client
+npm start
+```
+
+6. Open a web browser and access the application at http://localhost:3000 for the frontend, http://localhost:8800 for the backend API, and http://localhost:3001 for the admin dashboard.
+
+## Contributing
+
+1. If you would like to contribute to the E7GEZ project, please follow these steps:
+
+2. Fork the repository and create a new branch for your feature or bugfix.
+
+3. Make changes to your branch and test thoroughly.
+
+4. Submit a pull request with a detailed description of the changes made, any relevant documentation updates, and test cases.
+
+5. Await feedback and address any review comments.
+
+6. Once approved, your changes will be merged into the main repository.
+
+## Contact
+For any inquiries or issues, please contact Abdallah Ibrahim at abdallah.hussein.ibrahim@gmail.com.
+
+Thank you
+
