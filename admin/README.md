@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# Admin Dashboard
+This is the admin dashboard component of the restaurant reservation project, which provides a web-based interface for restaurant administrators to manage reservations, view booking details, and monitor table availability. It is built using React.js, Redux for state management, Material-UI for UI components, and Axios for API communication.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+The admin dashboard component includes the following features:
 
-## Available Scripts
+* Reservation management: Administrators can view and manage reservations made by customers, including details such as reservation ID, table number, date, time, and number of guests. They can also update the reservation status (e.g., confirm, cancel) based on restaurant policies.
 
-In the project directory, you can run:
+* Table availability: Administrators can view the availability status of all tables in real-time, including tables that are currently occupied, reserved, or available. They can also update the availability status of tables as needed.
 
-### `npm start`
+* Dashboard analytics: Administrators can view graphical analytics and statistics related to reservations, such as reservation trends, popular reservation times, and reservation cancellation rates, to gain insights and make data-driven decisions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* User management: Administrators can view and manage user accounts, including adding new users, updating user information, and managing user roles (e.g., admin, staff).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Responsive layout: The admin dashboard component is designed with a responsive layout that adapts to different devices such as desktops, tablets, and mobile phones, providing a seamless experience across various platforms.
 
-### `npm test`
+## Installation
+Please follow installation as mention in main repository README.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contributing
+If you would like to contribute to the admin dashboard component of the restaurant reservation project, please follow the contributing guidelines mentioned in the main repository's README.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+For any inquiries or issues related to the admin dashboard component, please contact Abdallah Ibrahim at abdallah.ibrahim.hussein@gmail.com.
