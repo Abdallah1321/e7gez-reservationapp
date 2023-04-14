@@ -47,10 +47,13 @@ const Reserve = ({ setOpen, restaurantId }) => {
           `http://localhost:8800/api/tables/availability/${selectedTableId}`,
           { dates: date }
         );
+        setOpen(false)
+        navigate("/")
+        alert("Reservation Made!")
         return res.data
       }
-      setOpen(false)
-      navigate("/")
+      console.log("Reserved")
+
     } catch (err) {
       // Handle error
     }

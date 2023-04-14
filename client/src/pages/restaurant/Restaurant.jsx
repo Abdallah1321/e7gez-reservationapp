@@ -57,47 +57,6 @@ function RestaurantLayout() {
 
   console.log(seats.seat);
 
-  // This is a simplified example of the layout and table data
-  const layout = {
-    tables: [
-      {
-        id: 1,
-        x: 50,
-        y: 50,
-        width: 100,
-        height: 100,
-        capacity: 4,
-        features: ["near balcony"],
-      },
-      {
-        id: 2,
-        x: 200,
-        y: 50,
-        width: 100,
-        height: 100,
-        capacity: 6,
-        features: ["near plants"],
-      },
-      {
-        id: 3,
-        x: 50,
-        y: 200,
-        width: 100,
-        height: 100,
-        capacity: 2,
-        features: ["near window"],
-      },
-      {
-        id: 4,
-        x: 200,
-        y: 200,
-        width: 100,
-        height: 100,
-        capacity: 8,
-        features: [],
-      },
-    ],
-  };
 
   const handleOpen = (i) => {
     setSlideNumber(i);

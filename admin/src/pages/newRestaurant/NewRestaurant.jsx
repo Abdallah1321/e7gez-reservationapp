@@ -12,6 +12,7 @@ const NewRestaurant = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [tables, setTables] = useState([]);
+  const [menu, setMenuItems] = useState([]);
 
   const navigate = useNavigate();
 
@@ -21,12 +22,28 @@ const NewRestaurant = () => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  const handleMenuItemChange = (index, event) => {
+    const updatedMenuItems = [...menu];
+    updatedMenuItems[index][event.target.name] = event.target.value;
+    setMenuItems(updatedMenuItems);
+  };
+
   const handleSelect = (e) => {
     const value = Array.from(
       e.target.selectedOptions,
       (option) => option.value
     );
     setTables(value);
+  };
+
+  const handleAddMenuItem = () => {
+    setMenuItems([...menu, { name: "", price: "", description: "" }]);
+  };
+
+  const handleRemoveMenuItem = (index) => {
+    const updatedMenuItems = [...menu ];
+    updatedMenuItems.splice(index, 1);
+    setMenuItems(updatedMenuItems);
   };
 
   const config = {
@@ -50,12 +67,14 @@ const NewRestaurant = () => {
           );
 
           const { url } = uploadRes.data;
+          return url;
         })
       );
 
       const newRestaurant = {
         ...info,
         tables,
+        menu,
         photos: list,
       };
 
@@ -65,7 +84,6 @@ const NewRestaurant = () => {
         config
       );
       navigate("/restaurants");
-
     } catch (err) {}
   };
   return (
@@ -113,6 +131,45 @@ const NewRestaurant = () => {
                   />
                 </div>
               ))}
+              <div className="formInput">
+                {menu.map((menu, index) => (
+                  <div key={index}>
+                    <label>Item Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={menu.name}
+                      placeholder="Grilled Chicken"
+                      onChange={(event) => handleMenuItemChange(index, event)}
+                    />
+                    <label>Item Price</label>
+                    <input
+                      type="number"
+                      name="price"
+                      placeholder="20"
+                      value={menu.price}
+                      onChange={(event) => handleMenuItemChange(index, event)}
+                    />
+                    <label>Item Description</label>
+                    <input
+                      type="text"
+                      name="description"
+                      placeholder="Seasoned gourmet chicken, straight from the grill"
+                      value={menu.description}
+                      onChange={(event) => handleMenuItemChange(index, event)}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveMenuItem(index)}
+                    >
+                      Remove Menu Item
+                    </button>
+                  </div>
+                ))}
+                <button type="button" onClick={handleAddMenuItem}>
+                  Add Menu Item
+                </button>
+              </div>
               <div className="formInput">
                 <label>Featured</label>
                 <select id="featured" onChange={handleChange}>

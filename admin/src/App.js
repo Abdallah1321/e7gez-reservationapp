@@ -115,7 +115,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <NewTable title="Add New Restaurant" />
+                    <NewTable title="Add New Table" />
                   </ProtectedRoute>
                 }
               />

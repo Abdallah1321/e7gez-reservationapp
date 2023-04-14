@@ -11,10 +11,10 @@ export const useLogin = () => {
 
   const config = {
     headers: {
-      "Content-Type": "application/json"
-      },
-      withCredentials: true
-    }
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+  };
 
   const login = async (username, password) => {
     setIsLoading(true);
@@ -41,7 +41,7 @@ export const useLogin = () => {
       if (user.isAdmin) {
         dispatch({ type: "LOGIN", payload: user.details });
         setIsLoading(false);
-        navigate(-1);
+        navigate("/");
       } else {
         dispatch({
           type: "LOGIN_FAILURE",
