@@ -28,22 +28,6 @@ function RestaurantLayout() {
 
   const [selectedTableId, setSelectedTableId] = useState(null);
 
-  const handleTableClick = (tableId) => {
-    if (selectedTableId === tableId) {
-      setSelectedTableId(null);
-    } else {
-      setSelectedTableId(tableId);
-    }
-  };
-
-  const handleConfirmReservation = () => {
-    if (selectedTableId) {
-      alert(`Reservation confirmed for table ${selectedTableId}`);
-      setSelectedTableId(null);
-    } else {
-      alert("Please select a table to make a reservation.");
-    }
-  };
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);

@@ -9,10 +9,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useContext, useState } from "react";
 import { format } from "date-fns";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 
-const Header = ({type}) => {
+const Header = ({ type }) => {
   const [city, setCity] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [openSeats, setSeatsOptions] = useState(false);
@@ -29,20 +29,22 @@ const Header = ({type}) => {
     });
   };
 
-  const {dispatch} = useContext(SearchContext)
+  const { dispatch } = useContext(SearchContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-
-
-  const handleSearch = () =>{
-    dispatch({type:"NEW_SEARCH", payload:{city, startDate, seats}})
-    navigate("/restaurants", { state: {city, startDate, seats}})
-  } 
+  const handleSearch = () => {
+    dispatch({ type: "NEW_SEARCH", payload: { city, startDate, seats } });
+    navigate("/restaurants", { state: { city, startDate, seats } });
+  };
 
   return (
     <div className="header">
-      <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
+      <div
+        className={
+          type === "list" ? "headerContainer listMode" : "headerContainer"
+        }
+      >
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faUtensils} />
@@ -53,63 +55,75 @@ const Header = ({type}) => {
             <span>Reservations</span>
           </div>
         </div>
-        { type !== "list" &&
-        <><h1 className="headerTitle">
-          A brand New Dining Experience Here in Egypt!
-        </h1>
-        <p className="headerDescription">
-          Make reservations like never before and pick your favourite table!
-        </p>
-        <div className="headerSearch">
-          <div className="headerSearchItem">
-            <FontAwesomeIcon icon={faUtensils} className="headerIcon" />
-            <input
-              type="text"
-              placeholder="Where are we eating?"
-              className="headerSearchInput"
-              onChange={e=>setCity(e.target.value)}
-            />
-          </div>
-          <div className="headerSearchItem">
-            <FontAwesomeIcon icon={faCalendarDay} className="headerIcon" />
-            <span className="headerSearchText"></span>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              isClearable
-              placeholderText="When are we going?"
-              className="date"
-            />
-          </div>
-          <div className="headerSearchItem">
-            <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-            <span onClick={()=>setSeatsOptions(!openSeats)} className="headerSearchText">{`${seats.seat} seats`}</span>
-            {openSeats &&<div className="options">
-              <div className="optionItem">
-                <span className="optionText">Seats</span>
-                <div className="optionCounter">
-                  <button
-                  disabled={seats.seat <=1}
-                    className="optionCounterBtn"
-                    onClick={() => handleOption("seat", "d")}
-                  >
-                    -
-                  </button>
-                  <span className="optionCounterNumber">{seats.seat}</span>
-                  <button
-                    className="optionCounterBtn"
-                    onClick={() => handleOption("seat", "i")}
-                  >
-                    +
-                  </button>
-                </div>
+        {type !== "list" && (
+          <>
+            <h1 className="headerTitle">
+              A Brand New Dining Experience Here in Egypt!
+            </h1>
+            <p className="headerDescription">
+              Make reservations like never before and pick your favourite table!
+            </p>
+            <div className="headerSearch">
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faUtensils} className="headerIcon" />
+                <input
+                  type="text"
+                  placeholder="Where are we eating?"
+                  className="headerSearchInput"
+                  onChange={(e) => setCity(e.target.value)}
+                />
               </div>
-            </div>}
-          </div>
-          <div className="headerSearchItem">
-            <button className="headerBtn" onClick={handleSearch}>Search</button>
-          </div>
-        </div> </> }
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faCalendarDay} className="headerIcon" />
+                <span className="headerSearchText"></span>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  isClearable
+                  placeholderText="When are we going?"
+                  className="date"
+                />
+              </div>
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+                <span
+                  onClick={() => setSeatsOptions(!openSeats)}
+                  className="headerSearchText"
+                >{`${seats.seat} seats`}</span>
+                {openSeats && (
+                  <div className="options">
+                    <div className="optionItem">
+                      <span className="optionText">Seats</span>
+                      <div className="optionCounter">
+                        <button
+                          disabled={seats.seat <= 1}
+                          className="optionCounterBtn"
+                          onClick={() => handleOption("seat", "d")}
+                        >
+                          -
+                        </button>
+                        <span className="optionCounterNumber">
+                          {seats.seat}
+                        </span>
+                        <button
+                          className="optionCounterBtn"
+                          onClick={() => handleOption("seat", "i")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="headerSearchItem">
+                <button className="headerBtn" onClick={handleSearch}>
+                  Search
+                </button>
+              </div>
+            </div>{" "}
+          </>
+        )}
       </div>
     </div>
   );

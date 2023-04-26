@@ -98,7 +98,7 @@ export const getRestaurantTables = async (req, res, next) => {
         return Table.findById(table);
       })
     );
-    res.status(200).json(list)
+    res.status(200).json(list);
   } catch (err) {
     next;
   }

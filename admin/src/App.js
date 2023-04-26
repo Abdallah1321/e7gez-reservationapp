@@ -17,15 +17,15 @@ import NewTable from "./pages/newTable/NewTable";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
-  const ProtectedRoute = ({ children }) => {
-    const { user } = useAuthContext();
+    const ProtectedRoute = ({ children }) => {
+      const { user } = useAuthContext();
 
-    if (!user) {
-      return <Navigate to="/login" />;
-    }
+      if (!user) {
+        return <Navigate to="/login" />;
+      }
 
-    return children;
-  };
+      return children;
+    };
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
