@@ -2,6 +2,7 @@
   width: 100%;
   max-width: 1024px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
   z-index: 0;
@@ -13,10 +14,12 @@
   border-radius: 10px;
   overflow: hidden;
   height: 300px;
+  flex: 1 0 100%; /* Take full width on small screens */
 }
 
 .featuredImg {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -24,4 +27,30 @@
   position: absolute;
   bottom: 20px;
   left: 20px;
+  width: calc(100% - 40px);
+}
+
+@media screen and (min-width: 768px) {
+  .featuredItem {
+    flex: 0 0 calc(50% - 10px); /* Show two items per row on medium screens */
+    height: 200px;
+  }
+
+  .featuredTitles {
+    width: calc(50% - 40px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .featuredItem {
+    flex: 0 0 calc(33.33% - 20px); /* Show three items per row on large screens */
+    height: 300px;
+  }
+  
+  .featuredTitles {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
 }

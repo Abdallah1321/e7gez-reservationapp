@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   height: 50px;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -7,7 +7,7 @@
   justify-content: center;
 }
 
-.navContainer{
+.navContainer {
   width: 100%;
   max-width: 1024px;
   color: #550457;
@@ -16,7 +16,7 @@
   justify-content: space-between;
 }
 
-.logout{
+.logout {
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
@@ -27,17 +27,31 @@
   font-size: 1em;
 }
 
-.brand-logo{
+.brand-logo {
   padding-top: 12px;
   padding-left: 10px;
   height: 40px;
 }
 
-.navButton{
+.navButton {
   margin-left: 20px;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   color: #550457;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .navContainer {
+    padding: 0 10px;
+  }
+
+  .brand-logo {
+    padding-left: 0;
+  }
+
+  .navButton {
+    margin-left: 10px;
+  }
 }

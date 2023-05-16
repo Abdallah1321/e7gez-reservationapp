@@ -2,6 +2,7 @@
   width: 100%;
   max-width: 1024px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
 }
@@ -40,4 +41,23 @@
 
 .frRating > span {
   font-size: 14px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+  .frItem {
+    flex-basis: 100%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .frItem {
+    flex-basis: calc(50% - 10px);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .frItem {
+    flex-basis: calc(33.33% - 10px);
+  }
 }

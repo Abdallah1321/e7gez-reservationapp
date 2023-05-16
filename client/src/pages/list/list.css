@@ -8,6 +8,7 @@
   width: 100%;
   max-width: 1024px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -60,15 +61,15 @@
   font-size: 12px;
 }
 
-.lsOptions{
-  padding: 10px
+.lsOptions {
+  padding: 10px;
 }
 
 .lsOptionInput {
   width: 50px;
 }
 
-.listSearch>button{
+.listSearch > button {
   padding: 10px;
   background-color: #12334b;
   color: white;
@@ -80,4 +81,20 @@
 
 .listResult {
   flex: 3;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .listSearch {
+    position: static;
+    top: unset;
+  }
+  
+  .listWrapper {
+    flex-direction: column;
+  }
+  
+  .listResult {
+    flex: unset;
+  }
 }

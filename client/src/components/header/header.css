@@ -9,16 +9,17 @@
 .headerContainer {
   width: 100%;
   max-width: 1024px;
-  margin: 20px 0px 100px 0px;
+  margin: 20px 10px 100px 10px;
 }
 
-.headerContainer.listMode{
-  margin: 20px 0px 0px 0px;
+.headerContainer.listMode {
+  margin: 20px 10px 0px 10px;
 }
 
 .headerList {
   display: flex;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-bottom: 50px;
 }
 
@@ -62,50 +63,49 @@
   max-width: 1024px;
 }
 
-.headerIcon{
+.headerIcon {
   color: lightgray;
 }
 
-.headerSearchItem{
+.headerSearchItem {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.headerSearchInput{
+.headerSearchInput {
   border: none;
   outline: none;
   width: auto;
 }
 
-.headerSearchText{
+.headerSearchText {
   color: lightgray;
   cursor: pointer;
 }
 
-.date{
+.date {
   z-index: 1;
 }
 
-.options{
+.options {
   position: absolute;
   top: 50px;
   background-color: white;
   color: gray;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
   z-index: 2;
 }
 
-.optionItem{
+.optionItem {
   width: 200px;
   display: flex;
   justify-content: space-between;
   margin: 10px;
 }
 
-.optionCounter{
+.optionCounter {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -113,7 +113,7 @@
   color: black;
 }
 
-.optionCounterBtn{
+.optionCounterBtn {
   width: 30px;
   height: 30px;
   border: 1px solid #708e3d;
@@ -122,6 +122,74 @@
   background-color: white;
 }
 
-.optionCounterBtn:disabled{
+.optionCounterBtn:disabled {
   cursor: not-allowed;
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+  .headerContainer {
+    margin: 20px 5px 100px 5px;
+  }
+
+  .headerSearch {
+    bottom: -20px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .headerContainer {
+    margin: 20px 10px 100px 10px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .headerContainer {
+    margin: 20px 10px 100px 10px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .headerContainer {
+    margin: 20px 30px 100px 30px;
+  }
+
+  .headerList {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .headerContainer {
+    margin: 20px auto 100px auto;
+  }
+
+  .headerList {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .headerContainer {
+    margin: 20px 5px 100px 5px;
+  }
+
+  .headerSearch {
+    bottom: -20px;
+  }
+
+  .headerList {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .headerContainer {
+    margin: 20px 10px 100px 10px;
+  }
+
+  .headerList {
+    gap: 15px;
+  }
 }
