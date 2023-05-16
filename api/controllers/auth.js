@@ -17,7 +17,7 @@ export const register = async (req, res, next) => {
       throw Error("Password is weak!");
     }
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+    const hash = bcrypt.hashSync(req.bodyd.password, salt);
 
     const newUser = new User({
       ...req.body,
