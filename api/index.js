@@ -21,7 +21,11 @@ const connect = async () => {
 };
 
 const corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:3001"],
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://e7gez.netlify.app/",
+  ],
   credentials: true,
 };
 app.use(cors(corsOptions));
