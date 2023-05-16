@@ -16,7 +16,7 @@ const NewRestaurant = () => {
 
   const navigate = useNavigate();
 
-  const { data, loading, error } = useFetch("http://localhost:8800/api/tables");
+  const { data, loading, error } = useFetch("https://e7gez-be.onrender.com/api/tables");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -79,7 +79,7 @@ const NewRestaurant = () => {
       };
 
       await axios.post(
-        "http://localhost:8800/api/restaurants",
+        "https://e7gez-be.onrender.com/api/restaurants",
         newRestaurant,
         config
       );

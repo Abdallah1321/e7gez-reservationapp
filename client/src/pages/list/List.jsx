@@ -18,7 +18,7 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `http://localhost:8800/api/restaurants?city=${city}&min=${min || 0}&max=${
+    `https://e7gez-be.onrender.com/api/restaurants?city=${city}&min=${min || 0}&max=${
       max || 99999
     }`
   );

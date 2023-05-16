@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://localhost:8800/api',
+      target: 'https://e7gez-be.onrender.com/api',
       changeOrigin: true,
     })
   );

@@ -29,7 +29,7 @@ const New = ({ inputs, title }) => {
 
       const { url } = uploadRes.data;
 
-      await axios.post("http://localhost:8800/api/auth/register", {
+      await axios.post("https://e7gez-be.onrender.com/api/auth/register", {
         ...info,
         img: url,
       });

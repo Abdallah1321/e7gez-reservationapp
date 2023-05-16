@@ -34,7 +34,7 @@ function RestaurantLayout() {
   const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(
-    `http://localhost:8800/api/restaurants/find/${id}`
+    `https://e7gez-be.onrender.com/api/restaurants/find/${id}`
   );
 
   const { seats } = useContext(SearchContext);

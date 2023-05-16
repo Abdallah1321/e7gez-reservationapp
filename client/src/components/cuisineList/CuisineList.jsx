@@ -4,7 +4,7 @@ import { RaceBy } from "@uiball/loaders";
 
 const CuisineList = () => {
   const { data, loading, error } = useFetch(
-    "http://localhost:8800/api/restaurants/countByType"
+    "https://e7gez-be.onrender.com/api/restaurants/countByType"
   );
   const images = [
     "https://images.unsplash.com/photo-1587899897387-091ebd01a6b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80",

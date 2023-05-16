@@ -14,7 +14,7 @@ export const useSignup = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:8800/api/auth/register', { username, email, password }, {
+      const response = await axios.post('https://e7gez-be.onrender.com/api/auth/register', { username, email, password }, {
         headers: {'Content-Type': 'application/json'}
       });
 

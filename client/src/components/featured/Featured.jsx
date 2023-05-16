@@ -4,7 +4,7 @@ import { RaceBy } from "@uiball/loaders";
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "http://localhost:8800/api/restaurants/countByCity?cities=NewCairo,Zamalek,NasrCity"
+    "https://e7gez-be.onrender.com/api/restaurants/countByCity?cities=NewCairo,Zamalek,NasrCity"
   );
   console.log(data);
 

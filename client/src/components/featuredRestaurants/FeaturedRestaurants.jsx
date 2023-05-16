@@ -4,7 +4,7 @@ import { RaceBy } from "@uiball/loaders";
 
 const FeaturedRestaurants = () => {
   const { data, loading, error } = useFetch(
-    "http://localhost:8800/api/restaurants?featured=true&limit=4"
+    "https://e7gez-be.onrender.com/api/restaurants?featured=true&limit=4"
   );
   return (
     <div className="fr">

@@ -15,7 +15,7 @@ const NewTable = () => {
   const navigate = useNavigate();
 
   const { data, loading, error } = useFetch(
-    "http://localhost:8800/api/restaurants"
+    "https://e7gez-be.onrender.com/api/restaurants"
   );
 
   const handleChange = (e) => {
@@ -25,7 +25,7 @@ const NewTable = () => {
   const handleClick = async (e)=>{
     e.preventDefault()
     try{
-      await axios.post(`http://localhost:8800/api/tables/${restaurantId}`, {...info})
+      await axios.post(`https://e7gez-be.onrender.com/api/tables/${restaurantId}`, {...info})
       navigate("/tables");
     } catch(err){
       console.log(err)

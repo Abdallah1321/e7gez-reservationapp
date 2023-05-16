@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpen, restaurantId }) => {
   const { data, loading, error } = useFetch(
-    `http://localhost:8800/api/restaurants/table/${restaurantId}`
+    `https://e7gez-be.onrender.com/api/restaurants/table/${restaurantId}`
   );
 
   const { startDate } = useContext(SearchContext);
@@ -44,7 +44,7 @@ const Reserve = ({ setOpen, restaurantId }) => {
     try {
       if (selectedTableId) {
         const res = await axios.put(
-          `http://localhost:8800/api/tables/availability/${selectedTableId}`,
+          `https://e7gez-be.onrender.com/api/tables/availability/${selectedTableId}`,
           { dates: date }
         );
         setOpen(false)
