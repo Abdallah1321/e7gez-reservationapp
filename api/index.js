@@ -24,11 +24,12 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://e7gez.netlify.app/",
+    "https://e7gez.netlify.app",
+    "https://admin-e7gez.netlify.app"
   ],
   credentials: true,
 };
-app.use(cors());
+app.use(cors(corsOptions));
 
 mongoose.connection.on("disconnected", () => {
   console.log("DB disconnected!");
