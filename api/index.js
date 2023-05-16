@@ -28,7 +28,7 @@ const corsOptions = {
   ],
   credentials: true,
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
 mongoose.connection.on("disconnected", () => {
   console.log("DB disconnected!");
