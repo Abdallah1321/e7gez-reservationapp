@@ -2,6 +2,10 @@
 
 This is a GitHub repository for a restaurant reservation project, which includes the frontend, backend, and admin dashboard components. The project aims to provide a comprehensive system for managing restaurant reservations, allowing customers to book tables and restaurant administrators to manage reservations efficiently. The project is developed as a graduation project for Coventry University in the Knowledge Hub Branch in Egypt.
 
+Website can be access from these 2 links:
+https://e7gez.netlify.app/
+https://admin-e7gez.netlify.app/
+
 ## Features
 The restaurant reservation project includes the following features:
 
